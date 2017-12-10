@@ -1,0 +1,34 @@
+{
+  "name": "mmall-fe",
+  "version": "1.0.0",
+  "description": "电商小项目",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "set WEBPACK_ENV=dev && webpack-dev-server --inline --port 8088",
+    "build": "set WEBPACK_ENV=online && webpack -p"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/codinglilong/mmall-fe.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/codinglilong/mmall-fe/issues"
+  },
+  "homepage": "https://github.com/codinglilong/mmall-fe#readme",
+  "devDependencies": {
+    "extract-text-webpack-plugin": "1.0.1",
+    "file-loader": "0.11.2",
+    "html-loader": "^0.5.1",
+    "html-webpack-plugin": "^2.30.1",
+    "webpack": "1.15.0",
+    "webpack-dev-server": "1.16.5"
+  },
+  "dependencies": {
+    "css-loader": "^0.28.7",
+    "style-loader": "^0.19.0"
+  }
+}
