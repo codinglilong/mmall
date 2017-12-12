@@ -1,1 +1,2 @@
-console.log('我是全局的');
+require('./layout.css');
+require('node_modules/font-awesome/css/font-awesome.min.css');

@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "set WEBPACK_ENV=dev && webpack-dev-server --inline --port 8088",
+    "start": "set WEBPACK_ENV=dev && webpack-dev-server",
     "build": "set WEBPACK_ENV=online && webpack -p"
   },
   "repository": {
@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/codinglilong/mmall-fe#readme",
   "devDependencies": {
+    "clean-webpack-plugin": "^0.1.17",
     "extract-text-webpack-plugin": "1.0.1",
     "file-loader": "0.11.2",
     "html-loader": "^0.5.1",
@@ -29,6 +30,8 @@
   },
   "dependencies": {
     "css-loader": "^0.28.7",
+    "font-awesome": "^4.7.0",
+    "hogan": "^1.0.2",
     "style-loader": "^0.19.0"
   }
 }

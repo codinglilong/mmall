@@ -2,8 +2,10 @@ const path = require('path');
 const webpack =require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin =require('html-webpack-plugin');
+//清除输出目录，免得每次手动删除
+// const CleanWebpackPlugin = require('clean-webpack-plugin');
+
 const WEBPACK_ENV = process.env.WEBPACK_ENV || 'dev';
-console.log(WEBPACK_ENV);
 
 const getHtmlConfig =function(name){
     return {
@@ -40,7 +42,17 @@ const config={
             }
         ]
     },
+    resolve:{
+        alias:{
+            node_modules:__dirname+'/node_modules',
+            util:__dirname+'/src/util',
+            page:__dirname+'/src/page',
+            service:__dirname+'/src/service',
+            image:__dirname+'/src/image',
+        }
+    },
     plugins:[
+        // new CleanWebpackPlugin(['dist']),
         new webpack.optimize.CommonsChunkPlugin({
             name:'common',
             filename:'js/base.js'
@@ -48,7 +60,19 @@ const config={
         new ExtractTextPlugin("css/[name].css"),
         new HtmlWebpackPlugin(getHtmlConfig('index')),
         new HtmlWebpackPlugin(getHtmlConfig('login')),
-    ]
+    ],
+    devServer:{
+        port: 8088,
+        inline:true,
+        proxy: [
+            {
+                context: ['/product/*', '/user/*', '/cart/*', '/order/*', '/shipping/*'],
+                target: 'http://happymmall.com',
+                secure: false,
+                changeOrigin: true
+            }  
+        ]
+    }
 }
 if('dev' === WEBPACK_ENV){
     config.entry.common.push('webpack-dev-server/client?http://localhost:8080/');
