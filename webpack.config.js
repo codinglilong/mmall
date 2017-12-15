@@ -7,12 +7,13 @@ const HtmlWebpackPlugin =require('html-webpack-plugin');
 
 const WEBPACK_ENV = process.env.WEBPACK_ENV || 'dev';
 
-const getHtmlConfig =function(name){
+const getHtmlConfig =function(name,title){
     return {
         template:'./src/view/'+name+'.html',
         filename:'view/'+name+'.html',
         inject:true,
         hash:true,
+        title:title,
         chunks:['common',name],
     }
 }
@@ -20,7 +21,8 @@ const config={
     entry: {
         'common':['./src/page/common/index.js'],
         'index':['./src/page/index/index.js'],
-        'login':['./src/page/login/index.js']
+        'login':['./src/page/login/index.js'],
+        'result':['./src/page/result/index.js']
     },
     output: {
         path: path.resolve(__dirname, 'dist'),
@@ -39,7 +41,11 @@ const config={
             {
                 test: /\.(png|jpe?g|gif|svg|woff|woff2|ttf|eot|ico)\??.*$/,
                 loader:'file-loader?limit=100&name=images/[name].[ext]',
-            }
+            },
+            {
+                test:/\.template$/,
+                loader:'html-loader',
+            },
         ]
     },
     resolve:{
@@ -58,8 +64,9 @@ const config={
             filename:'js/base.js'
         }),
         new ExtractTextPlugin("css/[name].css"),
-        new HtmlWebpackPlugin(getHtmlConfig('index')),
-        new HtmlWebpackPlugin(getHtmlConfig('login')),
+        new HtmlWebpackPlugin(getHtmlConfig('index','首页')),
+        new HtmlWebpackPlugin(getHtmlConfig('login','用户登录')),
+        new HtmlWebpackPlugin(getHtmlConfig('result','操作结果')),
     ],
     devServer:{
         port: 8088,
