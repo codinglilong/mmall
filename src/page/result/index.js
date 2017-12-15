@@ -5,5 +5,4 @@ $(function(){
     var type = _mm.getUrlParam('type') || 'default';
     var $element = $('.'+type+'-success');
     $element.show();
-    
 })
