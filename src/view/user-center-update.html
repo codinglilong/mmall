@@ -8,6 +8,15 @@
 <body>
     <%= require('html-loader!./layout/nav.html') %>
     <%= require('html-loader!./layout/header.html') %>
+    <div class="crumb">
+        <div class="w">
+            <div class="crumb-con">
+                <a href="./index.html" class="link">MMall</a>
+                <span>></span>
+                <span class="link-text">修改个人信息</span>
+            </div>
+        </div>
+    </div>
     <div class="page-wrap w">
         <%= require('html-loader!./layout/nav-side.html') %>
         <div class="content with-nav"></div>

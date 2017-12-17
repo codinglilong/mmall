@@ -3,7 +3,7 @@
 <li class="nav-item active">
 {{/isActive}}
 {{^isActive}}
-<li class="nav-item"></li>
+<li class="nav-item">
 {{/isActive}}
     <a href="{{href}}" class="link">{{desc}}</a>
 </li>

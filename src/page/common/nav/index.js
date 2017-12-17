@@ -14,7 +14,7 @@ var nav={
             _mm.doLogin();
         });
         $('.js-register').click(function(){
-            window.location.href='./register.html';
+            window.location.href='./user-register.html';
         });
         $('.js-logout').click(function(){
             _user.logout(function(res){
@@ -22,6 +22,9 @@ var nav={
             },function(errMsg){
                 _mm.errorTips(errMsg);
             })
+        });
+        $('.js-user-center').click(function(){
+            window.location.href='./user-center.html';
         });
     },
     loadUserInfo:function(){

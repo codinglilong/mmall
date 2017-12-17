@@ -17,9 +17,9 @@ var navSide={
                 href:'./order-list.html',
             },
             {
-                name:'pass-update',
+                name:'user-center-update',
                 desc:'修改密码',
-                href:'./pass-update.html',
+                href:'./user-center-update.html',
             },
             {
                 name:'about',

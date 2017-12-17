@@ -65,6 +65,7 @@ var _mm ={
         if(type === 'email'){
             return  /^([0-9A-Za-z\-_\.]+)@([0-9a-z]+\.[a-z]{2,3}(\.[a-z]{2})?)$/g.test(value);
         }
+        return true;
     },
     goHome:function(){
         window.location.href = './index.html';
