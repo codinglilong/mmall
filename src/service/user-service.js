@@ -82,6 +82,24 @@ var _user={
             success:resolve,
             error:reject,
         });
+    },
+    updateUserInfo:function(userInfo,resolve,reject){
+        _mm.request({
+            url:_mm.getServerUrl('/user/update_information.do'),
+            data:userInfo,
+            method:'POST',
+            success:resolve,
+            error:reject,
+        });
+    },
+    updatePassword:function(userInfo,resolve,reject){
+        _mm.request({
+            url:_mm.getServerUrl('/user/reset_password.do'),
+            data:userInfo,
+            method:'POST',
+            success:resolve,
+            error:reject,
+        });
     }
 }
 module.exports =_user;

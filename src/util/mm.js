@@ -59,6 +59,9 @@ var _mm ={
         if(type === 'require'){
             return !!value;
         }
+        if(type==='password'){
+            return /^.{6,}$/.test(value);
+        }
         if(type === 'phone'){
             return /^1\d{10}$/.test(value);
         }

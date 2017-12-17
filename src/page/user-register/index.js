@@ -66,10 +66,6 @@ var page={
             result.msg="用户名不能为空";
             return result;
         }
-        if(!_mm.validate(formData.username,'require')){
-            result.msg="密码不能为空";
-            return result;
-        }
         if(formData.password.length<6){
             result.msg='密码长度不能少于6位';
             return result;

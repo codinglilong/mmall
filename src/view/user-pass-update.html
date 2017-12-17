@@ -27,7 +27,21 @@
             <div class="panel">
                 <div class="panel-title"><%= htmlWebpackPlugin.options.title %></div>
                 <div class="panel-body">
-                    <div class="loading"></div>
+                    <div class="user-info">
+                        <div class="form-line">
+                            <span class="label">原 密 码：</span>
+                            <input type="password" class="input" id="password" placeholder="请输入手机号码" autocomplete="off">
+                        </div>
+                        <div class="form-line">
+                            <span class="label">新 密 码：</span>
+                            <input type="password" class="input" id="password-new" placeholder="请输入邮箱地址" autocomplete="off">
+                        </div>
+                        <div class="form-line">
+                            <span class="label">确认新密码：</span>
+                            <input type="password" class="input" id="password-confirm" placeholder="请输入密码提示问题" autocomplete="off">
+                        </div>
+                        <button class="btn btn-submit">提交</button>
+                    </div>
                 </div>
             </div>
         </div>
