@@ -4,6 +4,7 @@ var _mm =require('util/mm.js');
 var header={
     init:function(){
         this.bindEvent();
+        this.onLoad();
         return this;
     },
     onLoad:function(){
