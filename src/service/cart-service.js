@@ -7,5 +7,13 @@ var _cart={
             error:reject,
         });
     },
+    addToCart:function(productInfo,resolve,reject){
+        _mm.request({
+            url:_mm.getServerUrl('/cart/add.do'),
+            data:productInfo,
+            success:resolve,
+            error:reject,
+        });
+    }
 }
 module.exports =_cart;

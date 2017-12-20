@@ -18,6 +18,8 @@ var _mm ={
                     _this.doLogin();
                 }else if(res.status === 1){//请求错误
                     typeof param.error === 'function' && param.error(res.msg);
+                }else{
+                    typeof param.error === 'function' && param.error(res.msg);
                 }
             },
             error:function(err){

@@ -8,5 +8,13 @@ var _product={
             error:reject,
         });
     },
+    getProductDetail:function(productId,resolve,reject){
+        _mm.request({
+            url:_mm.getServerUrl('/product/detail.do'),
+            data:{productId:productId},
+            success:resolve,
+            error:reject,
+        });
+    }
 }
 module.exports =_product;

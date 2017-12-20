@@ -4,6 +4,7 @@ require('./index.css');
 
 var _mm =require('util/mm.js');
 var _product =require('service/product-service.js');
+var Pagination=require('util/pagination/index.js');
 var templateIndex =require('./index.template');
 
 var page={
@@ -61,13 +62,28 @@ var page={
                 list:res.list
             });
             $('.p-list-con').html(listHtml);
-            _this.loadPagination(res.pageNum,res.pages)
+            _this.loadPagination({
+                hasPreviousPage:res.hasPreviousPage,
+                prePage:res.prePage,
+                hasNextPage:res.hasNextPage,
+                nextPage:res.nextPage,
+                pageNum:res.pageNum,
+                pages:res.pages,
+            })
         },function(errMsg){
             _mm.errorTips(errMsg);
         });
     },
-    loadPagination:function(pageNum,pages){
-
+    loadPagination:function(pageInfo){
+        var _this=this;
+        this.pagination ? '' : (this.pagination = new Pagination());
+        this.pagination.render($.extend({},pageInfo,{
+            container:$('.pagination'),
+            onSelectPage:function(pageNum){
+                _this.data.listParam.pageNum=pageNum;
+                _this.loadList();
+            }
+        }))
     }
 }
 $(function(){
