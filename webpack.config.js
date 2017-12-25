@@ -5,33 +5,13 @@ const HtmlWebpackPlugin =require('html-webpack-plugin');
 //清除输出目录，免得每次手动删除
 // const CleanWebpackPlugin = require('clean-webpack-plugin');
 
+const html_config = require('./config/html_config.js');
 const WEBPACK_ENV = process.env.WEBPACK_ENV || 'dev';
 
-const getHtmlConfig =function(name,title){
-    return {
-        template:'./src/view/'+name+'.html',
-        filename:'view/'+name+'.html',
-        inject:true,
-        hash:true,
-        title:title,
-        chunks:['common',name],
-    }
-}
 const config={
     devtool:'cheap-module-eval-source-map',
     entry: {
         'common':['./src/page/common/index.js'],
-        'index':['./src/page/index/index.js'],
-        'user-login':['./src/page/user-login/index.js'],
-        'user-register':['./src/page/user-register/index.js'],
-        'user-pass-reset':['./src/page/user-pass-reset/index.js'],
-        'user-center':['./src/page/user-center/index.js'],
-        'user-center-update':['./src/page/user-center-update/index.js'],
-        'user-pass-update':['./src/page/user-pass-update/index.js'],
-        'result':['./src/page/result/index.js'],
-        'list':['./src/page/list/index.js'],
-        'detail':['./src/page/detail/index.js'],
-        'cart':['./src/page/cart/index.js'],
     },
     output: {
         path: path.resolve(__dirname, 'dist'),
@@ -73,17 +53,6 @@ const config={
             filename:'js/base.js'
         }),
         new ExtractTextPlugin("css/[name].css"),
-        new HtmlWebpackPlugin(getHtmlConfig('index','首页')),
-        new HtmlWebpackPlugin(getHtmlConfig('user-login','用户登录')),
-        new HtmlWebpackPlugin(getHtmlConfig('result','操作结果')),
-        new HtmlWebpackPlugin(getHtmlConfig('user-register','用户注册')),
-        new HtmlWebpackPlugin(getHtmlConfig('user-pass-reset','密码找回')),
-        new HtmlWebpackPlugin(getHtmlConfig('user-center','用户中心')),
-        new HtmlWebpackPlugin(getHtmlConfig('user-center-update','修改个人信息')),
-        new HtmlWebpackPlugin(getHtmlConfig('user-pass-update','修改密码')),
-        new HtmlWebpackPlugin(getHtmlConfig('list','商品列表')),
-        new HtmlWebpackPlugin(getHtmlConfig('detail','商品详情')),
-        new HtmlWebpackPlugin(getHtmlConfig('cart','购物车')),
     ],
     devServer:{
         port: 8088,
@@ -102,4 +71,7 @@ const config={
 if('dev' === WEBPACK_ENV){
     config.entry.common.push('webpack-dev-server/client?http://localhost:8080/');
 }
- module.exports = config;
+config.entry=Object.assign(config.entry,html_config.entryList());
+config.plugins=config.plugins.concat(html_config.pluginList());
+
+module.exports = config;
