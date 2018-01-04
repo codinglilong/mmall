@@ -57,6 +57,10 @@ const config={
             key:'order-detail',
             name:'订单详情',
         },
+        {
+            key:'payment',
+            name:'付款页面',
+        },
     ],
     getHtmlConfig:function(name,title){
         return {
