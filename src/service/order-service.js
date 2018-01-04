@@ -14,6 +14,34 @@ var _order={
             success:resolve,
             error:reject,
         });
-    }
+    },
+    getOrderList:function(orderInfo,resolve,reject){
+        _mm.request({
+            url:_mm.getServerUrl('/order/list.do'),
+            data:orderInfo,
+            success:resolve,
+            error:reject,
+        });
+    },
+    getOrderDetail:function(orderNumber,resolve,reject){
+        _mm.request({
+            url:_mm.getServerUrl('/order/detail.do'),
+            data:{
+                orderNo:orderNumber
+            },
+            success:resolve,
+            error:reject,
+        });
+    },
+    cancelOrder:function(orderNumber,resolve,reject){
+        _mm.request({
+            url:_mm.getServerUrl('/order/cancel.do'),
+            data:{
+                orderNo:orderNumber
+            },
+            success:resolve,
+            error:reject,
+        });
+    },
 }
 module.exports =_order;

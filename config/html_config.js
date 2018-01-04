@@ -49,6 +49,14 @@ const config={
             key:'order-confirm',
             name:'订单确认页',
         },
+        {
+            key:'order-list',
+            name:'订单列表',
+        },
+        {
+            key:'order-detail',
+            name:'订单详情',
+        },
     ],
     getHtmlConfig:function(name,title){
         return {

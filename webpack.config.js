@@ -61,7 +61,7 @@ const config={
         proxy: [
             {
                 context: ['/product/*', '/user/*', '/cart/*', '/order/*', '/shipping/*'],
-                target: 'http://happymmall.com',
+                target: 'http://test.happymmall.com',
                 secure: false,
                 changeOrigin: true
             }  
